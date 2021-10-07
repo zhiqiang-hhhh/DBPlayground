@@ -8,12 +8,11 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_subdirectory(src)
 add_subdirectory(contrib/gflags)
-set(gflags_DIR ${PROJECT_BINARY_DIR}/contrib/gflags)
+#set(gflags_DIR ${PROJECT_BINARY_DIR}/contrib/gflags)
 
 message(STATUS "${gflags_DIR}")
-
 add_subdirectory(contrib/glog)
 
 add_executable(miniKV main.cpp)
-target_link_libraries(miniKV miniKV_lib)
+target_link_libraries(miniKV miniKV_lib glog::glog)
 

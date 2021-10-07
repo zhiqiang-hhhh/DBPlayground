@@ -5,4 +5,5 @@ list(REMOVE_ITEM miniKV_sources ${PROJECT_SOURCE_DIR}/src/Storage/Page/HashTable
 list(REMOVE_ITEM miniKV_sources ${PROJECT_SOURCE_DIR}/src/Storage/Page/HashTableHeaderPage.h ${PROJECT_SOURCE_DIR}/src/Storage/Page/HashTableHeaderPage.cpp)
 
 add_library(miniKV_lib STATIC ${miniKV_sources})
+target_link_libraries(miniKV_lib glog::glog)
 

@@ -1,8 +1,9 @@
 #include <iostream>
-#include "src/MiniKV.h"
 #include <vector>
 
-int main() {
+#include "src/MiniKV.h"
+
+int main(int argc, char** argv) {
     miniKV::MiniKV db;
 
     std::vector<std::pair<miniKV::key_t , miniKV::value_t>> entries;

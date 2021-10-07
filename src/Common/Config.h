@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "src/Common/Macros.h"
+#include "glog/logging.h"
 
 namespace miniKV{
 

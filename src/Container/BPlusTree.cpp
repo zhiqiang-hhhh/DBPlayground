@@ -104,8 +104,8 @@ namespace miniKV {
         // For a new B+ tree, the root page IS the leaf page.
         leaf_page->Insert(key, value);
 
-        std::cout << "[Container] Created a new tree, entry " << key << " : " << value
-                  << " ENTRY_SIZE " << sizeof(MappingType)
+        LOG(INFO) << "Created a new BPLUS Tree with entry [ " << key << " : " << value
+                  << "] ENTRY_SIZE " << sizeof(MappingType)
                  << " LEAF_MAX_SIZE " << leaf_max_size_ << " INTERNAL_MAX_SIZE " << internal_max_size_ << std::endl;
 
         buffer_pool_manager_->UnpinPage(root_page_id_, true);  // unpin
@@ -169,8 +169,7 @@ namespace miniKV {
             delete transaction;
         }
 
-        std::cout << "[Container] Entry " << key << " : " << value << " inserted\n";
-
+        LOG(INFO) << "Entry " << key << " : " << value << " inserted\n";
         return true;
     }
 

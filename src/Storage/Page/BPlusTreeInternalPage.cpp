@@ -130,7 +130,7 @@ namespace miniKV {
                                                    const ValueType &new_value) {
         int value_index = ValueIndex(old_value);
         if (value_index == -1) {
-            std::cout << strf("%s\n", "ValueIndex returns -1");
+            LOG(WARNING) << "Could no find value " << old_value << " current node size " << GetSize();
         }
 
         int old_size = GetSize();
