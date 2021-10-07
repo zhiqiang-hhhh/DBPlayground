@@ -1,0 +1,3 @@
+[submodule "contrib/glog"]
+	path = contrib/glog
+	url = git@github.com:google/glog.git
