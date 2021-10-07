@@ -1,3 +1,6 @@
 [submodule "contrib/glog"]
 	path = contrib/glog
 	url = git@github.com:google/glog.git
+[submodule "contrib/gflags"]
+	path = contrib/gflags
+	url = git@github.com:gflags/gflags.git
