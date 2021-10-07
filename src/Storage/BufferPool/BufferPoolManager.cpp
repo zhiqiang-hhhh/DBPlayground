@@ -155,7 +155,7 @@ namespace miniKV {
         freePage->pin_count = 1;
         freePage->is_dirty = false;
         free_list.pop_front();
-        LOG(INFO) << "Created a new page, page_id: " << freePage->page_id << std::endl ;
+//        LOG(INFO) << "Created a new page, page_id: " << freePage->page_id << std::endl ;
         return freePage;
     }  // namespace bustub
 
