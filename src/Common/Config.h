@@ -25,7 +25,7 @@ static constexpr int INVALID_TXN_ID = -1;                                     //
 static constexpr int INVALID_LSN = -1;                                        // invalid log sequence number
 static constexpr int HEADER_PAGE_ID = 0;                                      // the header page id
 static constexpr int PAGE_SIZE = 72;                                        // size of a data page in byte
-static constexpr int BUFFER_POOL_SIZE = 10;                                   // size of buffer pool
+static constexpr int BUFFER_POOL_SIZE = 20;                                   // size of buffer pool
 static constexpr int BUCKET_SIZE = 50;                                        // size of extendible hash bucket
 
 

@@ -133,7 +133,7 @@ void B_PLUS_TREE_LEAF_PAGE::MoveHalfTo(BPlusTreeLeafPage *recipient) {
 INDEX_TEMPLATE_ARGUMENTS
 void B_PLUS_TREE_LEAF_PAGE::CopyNFrom(MappingType *items, int size) {
 if (GetSize() + size > GetMaxSize()) {
-throw std::string("CopyNFrom: will overflow page");
+throw std::runtime_error("CopyNFrom: will overflow page");
 }
 
 int old_size = GetSize();

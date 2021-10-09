@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
     miniKV::MiniKV db;
 
     std::vector<std::pair<miniKV::key_t , miniKV::value_t>> entries;
-    for (int i = 0; i < 20; ++i) {
+    for (int i = 0; i < 100; ++i) {
         entries.push_back(std::pair<miniKV::key_t, miniKV::value_t>(i, i + 100));
     }
 
@@ -21,4 +21,5 @@ int main(int argc, char** argv) {
     }
 
     return 0;
+
 }

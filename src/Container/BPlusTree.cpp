@@ -242,7 +242,7 @@ namespace miniKV {
             // Splitting original root page, B+ tree height will grow by one
             parent_page = buffer_pool_manager_->NewPage();  // new root pinned
             if (parent_page == nullptr) {
-                throw std::string("out of memory");
+                throw std::runtime_error("out of memory");
             }
 
             page_id_t parent_page_id = parent_page->GetPageId();

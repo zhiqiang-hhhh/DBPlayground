@@ -57,7 +57,7 @@ protected:
     static constexpr size_t OFFSET_LSN = 4;
 
 private:
-    inline void ResetMemory() { memset(data, OFFSET_PAGE_START, PAGE_SIZE); }
+    inline void ResetMemory() { memset(data, OFFSET_PAGE_START, PAGE_SIZE + 16); }
 
     char data[PAGE_SIZE];
     page_id_t page_id = -1;
