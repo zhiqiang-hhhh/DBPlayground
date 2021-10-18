@@ -104,7 +104,7 @@ namespace miniKV {
         // For a new B+ tree, the root page IS the leaf page.
         leaf_page->Insert(key, value);
 
-        LOG(INFO) << "Created a new BPLUS Tree with entry [ " << key << " : " << value
+        LOG(INFO) << "Created a new BPLUS Tree with entry [" << key << " : " << value
                   << "] ENTRY_SIZE " << sizeof(MappingType)
                  << " LEAF_MAX_SIZE " << leaf_max_size_ << " INTERNAL_MAX_SIZE " << internal_max_size_ << std::endl;
 
@@ -169,7 +169,7 @@ namespace miniKV {
             delete transaction;
         }
 
-        LOG(INFO) << "Entry " << key << " : " << value << " inserted\n";
+//        LOG(INFO) << "Entry " << key << " : " << value << " inserted\n";
         return true;
     }
 
