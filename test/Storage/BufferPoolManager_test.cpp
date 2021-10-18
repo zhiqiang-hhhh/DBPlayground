@@ -1,15 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-//                         BusTub
-//
-// buffer_pool_manager_test.cpp
-//
-// Identification: test/buffer/buffer_pool_manager_test.cpp
-//
-// Copyright (c) 2015-2019, Carnegie Mellon University Database Group
-//
-//===----------------------------------------------------------------------===//
-
 #include "src/Storage/BufferPool/BufferPoolManager.h"
 
 #include <cstdio>

@@ -152,11 +152,12 @@ namespace miniKV {
     }
 
 // Helper function
-// Fetch {page_id} into buffer bool, update its parent page id, and unpin the page, marking it as dirty.
+// Fetch page_id into buffer bool, update its parent page id, and unpin the page, marking it as dirty.
     void updateParentPageId(page_id_t page_id, page_id_t parent_page_id, std::shared_ptr<BufferPoolManager> buffer_pool_manager) {
         auto mem_page = buffer_pool_manager->FetchPage(page_id);
         BPlusTreePage *tree_page = reinterpret_cast<BPlusTreePage *>(mem_page->GetData());
 
+        assert(tree_page != nullptr);
         tree_page->SetParentPageId(parent_page_id);
         buffer_pool_manager->UnpinPage(page_id, true);
     }

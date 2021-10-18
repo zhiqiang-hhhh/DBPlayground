@@ -1,4 +1,4 @@
-file(GLOB_RECURSE miniKV_sources ${PROJECT_SOURCE_DIR}/src/*/*.cpp ${PROJECT_SOURCE_DIR}/src/*/*/*[^HASH].cpp MiniKV.cpp)
+file(GLOB_RECURSE miniKV_sources ${PROJECT_SOURCE_DIR}/src/*/*.cpp ${PROJECT_SOURCE_DIR}/src/*/*/*[^HASH].cpp Core/MiniKV.cpp)
 
 list(REMOVE_ITEM miniKV_sources ${PROJECT_SOURCE_DIR}/src/Container/LeanerProbeHashTable.h ${PROJECT_SOURCE_DIR}/src/Container/LeanerProbeHashTable.cpp)
 list(REMOVE_ITEM miniKV_sources ${PROJECT_SOURCE_DIR}/src/Storage/Page/HashTablePage.h ${PROJECT_SOURCE_DIR}/src/Storage/Page/HashTablePage.cpp)
