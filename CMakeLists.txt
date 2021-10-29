@@ -17,8 +17,8 @@ include_directories(${BOOST_INCLUDE_DIRS})
 message("boost lib: ${Boost_LIBRARIES}")
 message("boost inc:${Boost_INCLUDE_DIR}")
 
-add_executable(miniKV main.cpp)
-target_link_libraries(miniKV miniKV_lib glog::glog ${Boost_LIBRARIES})
+#add_executable(miniKV main.cpp)
+#target_link_libraries(miniKV miniKV_lib glog::glog ${Boost_LIBRARIES})
 
 
 ######################################################################################################################

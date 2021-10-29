@@ -140,7 +140,7 @@ TEST(CoreTest, Concurrent_Read_Test) {
     auto container = std::make_shared<BPlusTree<key_t, value_t>>(buffer_pool_manager);
 
     std::vector<key_t> keys;
-    size_t NUM_KEYS = 20000;
+    size_t NUM_KEYS = 200000;
 
     std::random_device rd;
     std::mt19937 mt(rd());
@@ -149,7 +149,19 @@ TEST(CoreTest, Concurrent_Read_Test) {
       keys.push_back(dist(mt));
     }
 
-    InsertHelper(container, keys, 1);
+    size_t NUM_INSERT_THREADS = 4;
+    std::vector<std::thread> insert_threads;
+    for (size_t iter = 0; iter < NUM_KEYS;) {
+      const std::vector<key_t> keys_interval{keys.begin() + iter, keys.begin() + iter + NUM_KEYS / NUM_INSERT_THREADS};
+      LaunchParallelTest(insert_threads, 1, InsertHelper, container, keys_interval);
+      iter += NUM_KEYS / NUM_INSERT_THREADS;
+    }
+
+    LOG(INFO) << "Waiting for " << insert_threads.size() << " insert threads to finish";
+
+    WaitThreadsFinished(insert_threads);
+
+    LOG(INFO) << insert_threads.size() << " insert threads finished";
 
     auto read_func = [&](uint32_t tid) {
       for (const auto &key : keys) {
@@ -163,7 +175,7 @@ TEST(CoreTest, Concurrent_Read_Test) {
 
     std::vector<std::thread> read_threads;
 
-    size_t NUM_THREADS = 10;
+    size_t NUM_THREADS = 4;
     LaunchParallelTest(read_threads, NUM_THREADS, read_func);
 
     LOG(INFO) << "Waiting " << read_threads.size() << " read threads to finish";
