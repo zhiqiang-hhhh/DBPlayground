@@ -21,11 +21,11 @@
 #include <queue>
 #include <string>
 #include <vector>
-#include "src/Storage/Page/BPlusTreeInternalPage.h"
 
 #include "src/Common/Config.h"
 #include "src/Concurrency/Transaction.h"
 #include "src/Storage/BufferPool/BufferPoolManager.h"
+#include "src/Storage/Page/BPlusTreeInternalPage.h"
 #include "src/Storage/Page/BPlusTreeLeafPage.h"
 #include "src/Storage/Page/BPlusTreePage.h"
 
