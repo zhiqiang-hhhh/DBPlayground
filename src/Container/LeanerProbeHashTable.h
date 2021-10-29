@@ -12,32 +12,29 @@
 #include "src/Storage/BufferPool/BufferPoolManager.h"
 
 namespace miniKV {
-    template<typename KeyType, typename ValueType>
-    class LeanerProbeHashTable {
-    public:
-        explicit LeanerProbeHashTable (
-                std::shared_ptr<BufferPoolManager> bufferPoolManager_,
-                size_t numBuckets_
-        ) : bufferPoolManager(bufferPoolManager_), num_buckets(numBuckets_) {
-            auto header_page = bufferPoolManager->NewPage();
-            header_page_id = header_page->GetPageId();
-            hashFunc = std::hash<KeyType>{};
-        };
+template <typename KeyType, typename ValueType>
+class LeanerProbeHashTable {
+ public:
+  explicit LeanerProbeHashTable(std::shared_ptr<BufferPoolManager> bufferPoolManager_, size_t numBuckets_)
+      : bufferPoolManager(bufferPoolManager_), num_buckets(numBuckets_) {
+    auto header_page = bufferPoolManager->NewPage();
+    header_page_id = header_page->GetPageId();
+    hashFunc = std::hash<KeyType>{};
+  };
 
-        bool GetValue(const KeyType& key, ValueType& value);
-        bool Insert(const KeyType& key, const ValueType& value);
-        bool Remove(const KeyType& key);
-        void Resize(size_t size);
-        size_t GetSize() const;
+  bool GetValue(const KeyType &key, ValueType &value);
+  bool Insert(const KeyType &key, const ValueType &value);
+  bool Remove(const KeyType &key);
+  void Resize(size_t size);
+  size_t GetSize() const;
 
+ private:
+  page_id_t header_page_id;
 
-    private:
-        page_id_t header_page_id;
+  std::shared_ptr<BufferPoolManager> bufferPoolManager;
+  size_t num_buckets;
+  std::function<KeyType> hashFunc;
+};
+}  // namespace miniKV
 
-        std::shared_ptr<BufferPoolManager> bufferPoolManager;
-        size_t num_buckets;
-        std::function<KeyType> hashFunc;
-    };
-}
-
-#endif //MINIKV_LEANERPROBEHASHTABLE_H
+#endif  // MINIKV_LEANERPROBEHASHTABLE_H

@@ -17,7 +17,7 @@
 
 namespace miniKV {
 
-#define BUSTUB_ASSERT(expr, message) assert((expr) && (message))
+#define MINIKV_ASSERT(expr, message) assert((expr) && (message))
 
 #define UNREACHABLE(message) throw std::logic_error(message)
 
@@ -34,4 +34,4 @@ namespace miniKV {
   DISALLOW_COPY(cname);               \
   DISALLOW_MOVE(cname);
 
-}  // namespace bustub
+}  // namespace miniKV
