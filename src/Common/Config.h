@@ -6,6 +6,7 @@
 #define MINIKV_CONFIG_H
 
 #include <vector>
+
 #include "glog/logging.h"
 #include "src/Common/Macros.h"
 

@@ -11,6 +11,7 @@
 //===----------------------------------------------------------------------===//
 
 #include "src/Storage/BufferPool/LRUReplaceer.h"
+
 #include <cstddef>
 #include <fstream>
 #include <stack>

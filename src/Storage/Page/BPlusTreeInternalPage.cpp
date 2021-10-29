@@ -9,11 +9,12 @@
 //
 //===----------------------------------------------------------------------===//
 
+#include "src/Storage/Page/BPlusTreeInternalPage.h"
+
 #include <iostream>
 #include <sstream>
 
 #include "src/Common/Utils.h"
-#include "src/Storage/Page/BPlusTreeInternalPage.h"
 
 namespace miniKV {
 /*****************************************************************************
