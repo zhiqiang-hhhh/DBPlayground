@@ -10,7 +10,6 @@
 
 #include "src/Base/ReaderWriterLatch.h"
 #include "src/Common/Config.h"
-#include "src/Storage/BufferPool/BufferPoolManager.h"
 
 namespace miniKV {
 
