@@ -11,8 +11,8 @@
 #include <string>
 
 #include "src/Common/Config.h"
-#include "src/Storage/BufferPool/BufferPoolManager.h"
 #include "src/Concurrency/Transaction.h"
+#include "src/Storage/BufferPool/BufferPoolManager.h"
 
 namespace miniKV {
 
@@ -23,7 +23,6 @@ namespace miniKV {
 enum class IndexPageType { INVALID_INDEX_PAGE = 0, LEAF_PAGE, INTERNAL_PAGE };
 
 #define INDEX_TEMPLATE_ARGUMENTS template <typename KeyType, typename ValueType>
-
 
 /**
  * Both internal and leaf page are inherited from this page.
@@ -39,36 +38,34 @@ enum class IndexPageType { INVALID_INDEX_PAGE = 0, LEAF_PAGE, INTERNAL_PAGE };
  * ----------------------------------------------------------------------------
  */
 class BPlusTreePage {
-public:
-    bool IsLeafPage() const;
-    bool IsRootPage() const;
-    void SetPageType(IndexPageType page_type);
+ public:
+  bool IsLeafPage() const;
+  bool IsRootPage() const;
+  void SetPageType(IndexPageType page_type);
 
-    int GetSize() const;
-    void SetSize(int size);
-    void IncreaseSize(int amount);
+  int GetSize() const;
+  void SetSize(int size);
+  void IncreaseSize(int amount);
 
-    int GetMaxSize() const;
-    void SetMaxSize(int max_size);
-    int GetMinSize() const;
+  int GetMaxSize() const;
+  void SetMaxSize(int max_size);
+  int GetMinSize() const;
 
-    page_id_t GetParentPageId() const;
-    void SetParentPageId(page_id_t parent_page_id);
+  page_id_t GetParentPageId() const;
+  void SetParentPageId(page_id_t parent_page_id);
 
-    page_id_t GetPageId() const;
-    void SetPageId(page_id_t page_id);
+  page_id_t GetPageId() const;
+  void SetPageId(page_id_t page_id);
 
-private:
-    // member variable, attributes that both internal and leaf page share
-    IndexPageType page_type_ __attribute__((__unused__));
-    int size_ __attribute__((__unused__));
-    int max_size_ __attribute__((__unused__));
-    page_id_t parent_page_id_ __attribute__((__unused__));
-    page_id_t page_id_ __attribute__((__unused__));
+ private:
+  // member variable, attributes that both internal and leaf page share
+  IndexPageType page_type_ __attribute__((__unused__));
+  int size_ __attribute__((__unused__));
+  int max_size_ __attribute__((__unused__));
+  page_id_t parent_page_id_ __attribute__((__unused__));
+  page_id_t page_id_ __attribute__((__unused__));
 };
 
-}
+}  // namespace miniKV
 
-
-
-#endif //MINIKV_BPLUSTREEPAGE_H
+#endif  // MINIKV_BPLUSTREEPAGE_H

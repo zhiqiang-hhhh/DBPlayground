@@ -32,35 +32,36 @@ namespace miniKV {
  * | HEADER | KEY(1)+PAGE_ID(1) | KEY(2)+PAGE_ID(2) | ... | KEY(n)+PAGE_ID(n) |
  *  --------------------------------------------------------------------------
  */
-    INDEX_TEMPLATE_ARGUMENTS
-    class BPlusTreeInternalPage : public BPlusTreePage {
-    public:
-        // must call initialize method after "create" a new node
-        void Init(page_id_t page_id, page_id_t parent_id = INVALID_PAGE_ID, int max_size = INTERNAL_PAGE_SIZE);
+INDEX_TEMPLATE_ARGUMENTS
+class BPlusTreeInternalPage : public BPlusTreePage {
+ public:
+  // must call initialize method after "create" a new node
+  void Init(page_id_t page_id, page_id_t parent_id = INVALID_PAGE_ID, int max_size = INTERNAL_PAGE_SIZE);
 
-        KeyType KeyAt(int index) const;
-        void SetKeyAt(int index, const KeyType &key);
-        int ValueIndex(const ValueType &value) const;
-        ValueType ValueAt(int index) const;
+  KeyType KeyAt(int index) const;
+  void SetKeyAt(int index, const KeyType &key);
+  int ValueIndex(const ValueType &value) const;
+  ValueType ValueAt(int index) const;
 
-        ValueType Lookup(const KeyType &key) const;
-        void PopulateNewRoot(const ValueType &old_value, const KeyType &new_key, const ValueType &new_value);
-        int InsertNodeAfter(const ValueType &old_value, const KeyType &new_key, const ValueType &new_value);
-        void Remove(int index);
-        ValueType RemoveAndReturnOnlyChild();
+  ValueType Lookup(const KeyType &key) const;
+  void PopulateNewRoot(const ValueType &old_value, const KeyType &new_key, const ValueType &new_value);
+  int InsertNodeAfter(const ValueType &old_value, const KeyType &new_key, const ValueType &new_value);
+  void Remove(int index);
+  ValueType RemoveAndReturnOnlyChild();
 
-        // Split and Merge utility methods
-        void MoveAllTo(BPlusTreeInternalPage *recipient, const KeyType &middle_key, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
-        void MoveHalfTo(BPlusTreeInternalPage *recipient, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
-        void MoveFirstToEndOf(BPlusTreeInternalPage *recipient, const KeyType &middle_key,
-                              std::shared_ptr<BufferPoolManager> buffer_pool_manager);
-        void MoveLastToFrontOf(BPlusTreeInternalPage *recipient, const KeyType &middle_key,
-                               std::shared_ptr<BufferPoolManager> buffer_pool_manager);
+  // Split and Merge utility methods
+  void MoveAllTo(BPlusTreeInternalPage *recipient, const KeyType &middle_key,
+                 std::shared_ptr<BufferPoolManager> buffer_pool_manager);
+  void MoveHalfTo(BPlusTreeInternalPage *recipient, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
+  void MoveFirstToEndOf(BPlusTreeInternalPage *recipient, const KeyType &middle_key,
+                        std::shared_ptr<BufferPoolManager> buffer_pool_manager);
+  void MoveLastToFrontOf(BPlusTreeInternalPage *recipient, const KeyType &middle_key,
+                         std::shared_ptr<BufferPoolManager> buffer_pool_manager);
 
-    private:
-        void CopyNFrom(MappingType *items, int size, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
-        void CopyLastFrom(const MappingType &pair, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
-        void CopyFirstFrom(const MappingType &pair,  std::shared_ptr<BufferPoolManager> buffer_pool_manager);
-        MappingType array[0];
-    };
-}  // namespace bustub
+ private:
+  void CopyNFrom(MappingType *items, int size, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
+  void CopyLastFrom(const MappingType &pair, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
+  void CopyFirstFrom(const MappingType &pair, std::shared_ptr<BufferPoolManager> buffer_pool_manager);
+  MappingType array[0];
+};
+}  // namespace miniKV

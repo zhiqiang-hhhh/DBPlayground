@@ -9,16 +9,12 @@
 
 namespace miniKV {
 class HashTableHeaderPage {
-private:
-    page_id_t page_id;
-    size_t size;
+ private:
+  page_id_t page_id;
+  size_t size;
 
-    page_id_t bucket_page_ids[0];
-
+  page_id_t bucket_page_ids[0];
 };
-}
+}  // namespace miniKV
 
-
-
-
-#endif //MINIKV_HASHTABLEHEADERPAGE_H
+#endif  // MINIKV_HASHTABLEHEADERPAGE_H
