@@ -9,6 +9,7 @@
 
 #include "glog/logging.h"
 #include "src/Common/Macros.h"
+#include "src/Base/BoundedQueue.h"
 
 namespace miniKV {
 
