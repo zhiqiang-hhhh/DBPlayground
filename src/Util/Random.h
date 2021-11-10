@@ -5,10 +5,13 @@
 #ifndef MINIKV_RANDOM_H
 #define MINIKV_RANDOM_H
 
+#include <cstdint>
+#include <vector>
+
 class Random {
  public:
-  Int32_t GetValue();
-  std::vector<Int32_t> GetSequence();
+  int32_t GetValue();
+  std::vector<int32_t> GetSequence();
 };
 
 #endif  // MINIKV_RANDOM_H
