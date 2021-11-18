@@ -8,8 +8,8 @@
 #include <vector>
 
 #include "glog/logging.h"
-#include "src/Common/Macros.h"
 #include "src/Base/BoundedQueue.h"
+#include "src/Common/Macros.h"
 
 namespace miniKV {
 

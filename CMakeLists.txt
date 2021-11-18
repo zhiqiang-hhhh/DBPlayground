@@ -6,19 +6,35 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-add_subdirectory(contrib/gflags)
-add_subdirectory(contrib/glog)
+#add_subdirectory(contrib/gflags)
+#add_subdirectory(contrib/glog)
 add_subdirectory(contrib/googletest)
+
+find_package(gflags REQUIRED)
+message("gflags inc: ${gflags_INCLUDE_DIR}")
+message("gflags lib: ${gflags_LIBRARIES}")
+
+find_package(glog REQUIRED)
+message("glog inc: ${glog_INCLUDE_DIR}")
+message("glog lib: ${glog_LIBRARIES}")
+
+# TODO: why not work
+#find_package(GTest REQUIRED)
+#message("GTest inc: ${GTest_INCLUDE_DIR}")
+#message("GTest lib: ${GTest_LIBRARIES}")
+
+
 add_subdirectory(src)
 add_subdirectory(test)
 
-find_package(Boost REQUIRED regex date_time system filesystem thread graph)
+find_package(Boost REQUIRED regex date_time system filesystem graph)
 include_directories(${BOOST_INCLUDE_DIRS})
-message("boost lib: ${Boost_LIBRARIES}")
 message("boost inc:${Boost_INCLUDE_DIR}")
+message("boost lib: ${Boost_LIBRARIES}")
 
-#add_executable(miniKV main.cpp)
-#target_link_libraries(miniKV miniKV_lib glog::glog ${Boost_LIBRARIES})
+
+add_executable(miniKV main.cpp)
+target_link_libraries(miniKV ${Boost_LIBRARIES})
 
 
 ######################################################################################################################
