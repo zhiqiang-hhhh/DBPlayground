@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "src/Core/MiniKV.h"
+//#include "src/Core/MiniKV.h"
 #include <boost/multi_index_container.hpp>
 #include <boost/multi_index/member.hpp>
 #include <boost/multi_index/ordered_index.hpp>
@@ -36,6 +36,25 @@ void print_out_by(const MultiIndexContainer& s)
     /* dump the elements of the index to cout */
     std::copy(i.begin(),i.end(),std::ostream_iterator<value_type>(std::cout));
 }
+
+class ExceptionBase
+{
+protected:
+    std::string m_error;
+
+public:
+    ExceptionBase() = default;
+    ExceptionBase(std::string error) : m_error(std::move(error)) {}
+
+    std::string getError() const { return "BaseException : " +  m_error;}
+};
+
+class ExceptionDrive : public ExceptionBase
+{
+public:
+    ExceptionDrive(std::string error) : ExceptionBase(std::move(error)) {}
+    std::string getError() const { return "DriveException : " + m_error; }
+};
 
 
 int main(int argc, char** argv) {
@@ -92,6 +111,28 @@ int main(int argc, char** argv) {
     std::cout<<"by age"<<std::endl;
     print_out_by<age>(employees);
     std::cout<<std::endl;
+
+    auto throwBase = [](){
+        throw ExceptionBase("base");
+    };
+
+    auto throwDrive = [](){
+        throw ExceptionDrive("drive");
+    };
+
+    try
+    {
+        throwDrive();
+    }
+    catch (ExceptionDrive ex)
+    {
+        std::cout << "Catch drive exception " + ex.getError();
+    }
+    catch (ExceptionBase ex)
+    {
+        std::cout << "Catch base exception " + ex.getError();
+    }
+
 
     return 0;
 
