@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <list>
+#include <condition_variable>
+#include <mutex>
 
 template <typename T>
 class BoundedQueue {

@@ -2,27 +2,20 @@ cmake_minimum_required(VERSION 3.20)
 project(miniKV)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(CMAKE_BUILD_TYPE debug)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-#add_subdirectory(contrib/gflags)
-#add_subdirectory(contrib/glog)
-add_subdirectory(contrib/googletest)
-
 find_package(gflags REQUIRED)
-message("gflags inc: ${gflags_INCLUDE_DIR}")
-message("gflags lib: ${gflags_LIBRARIES}")
-
-find_package(glog REQUIRED)
-message("glog inc: ${glog_INCLUDE_DIR}")
-message("glog lib: ${glog_LIBRARIES}")
-
-# TODO: why not work
-#find_package(GTest REQUIRED)
-#message("GTest inc: ${GTest_INCLUDE_DIR}")
-#message("GTest lib: ${GTest_LIBRARIES}")
-
+#find_package(glog REQUIRED)
+# set(GFLAGS_INSTALL ON)
+# add_subdirectory(contrib/gflags)
+add_subdirectory(contrib/glog)
+add_subdirectory(contrib/googletest)
 
 add_subdirectory(src)
 add_subdirectory(test)
@@ -34,7 +27,7 @@ message("boost lib: ${Boost_LIBRARIES}")
 
 
 add_executable(miniKV main.cpp)
-target_link_libraries(miniKV ${Boost_LIBRARIES})
+target_link_libraries(miniKV miniKV_lib)
 
 
 ######################################################################################################################

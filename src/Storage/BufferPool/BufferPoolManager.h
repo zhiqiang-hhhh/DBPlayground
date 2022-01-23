@@ -6,7 +6,6 @@
 #define MINIKV_BUFFERPOOLMANAGER_H
 
 #include <list>
-#include <memory>
 #include <unordered_map>
 
 #include "src/Common/Config.h"

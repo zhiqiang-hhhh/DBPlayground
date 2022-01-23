@@ -9,13 +9,15 @@
  * Reader-Writer latch backed by std::mutex.
  */
 
+#include <cstdint>
 #include <memory>
 #include <mutex>
+#include <condition_variable>
 
 class ReaderWriterLatch {
   using mutex_t = std::mutex;
   using cond_t = std::condition_variable;
-  static const uint32_t MAX_READERS = UINT_MAX;
+  static const uint32_t MAX_READERS = UINT32_MAX;
 
  public:
   ReaderWriterLatch() = default;

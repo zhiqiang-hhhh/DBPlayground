@@ -3,8 +3,9 @@
 //
 
 #include "src/Storage/BufferPool/BufferPoolManager.h"
-
 #include "src/Storage/BufferPool/LRUReplaceer.h"
+
+#include <memory>
 
 namespace miniKV {
 
