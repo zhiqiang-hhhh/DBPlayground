@@ -9,14 +9,14 @@
 
 namespace miniKV {
 
-BufferPoolManager::BufferPoolManager(size_t pool_size_, std::shared_ptr<DiskManager> disk_manager_)
-    : pool_size(pool_size_), disk_manager(disk_manager_) {
-  for (int i = 0; i < pool_size; ++i) {
+BufferPoolManager::BufferPoolManager(size_t slot_num_, std::shared_ptr<DiskManager> disk_manager_)
+    : slot_num(slot_num_), disk_manager(disk_manager_) {
+  for (int i = 0; i < slot_num; ++i) {
     pages.push_back(std::shared_ptr<Page>(new Page));
     free_list.push_back(i);
   }
 
-  replacer = std::make_unique<LRUReplacer>(pool_size);
+  replacer = std::make_unique<LRUReplacer>(slot_num);
 }
 
 std::shared_ptr<Page> BufferPoolManager::FetchPage(page_id_t page_id) {

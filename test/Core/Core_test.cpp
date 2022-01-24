@@ -2,19 +2,22 @@
 // Created by 何智强 on 2021/10/17.
 //
 
+#include <cstddef>
 #include <random>
 #include <thread>
 #include <vector>
 
 #include "glog/logging.h"
 #include "gtest/gtest.h"
+#include "src/Common/Config.h"
 #include "src/Container/BPlusTree.h"
 #include "src/Storage/BufferPool/BufferPoolManager.h"
 #include "src/Storage/Disk/DiskManager.h"
 
 namespace miniKV {
 
-const size_t NUM_TRIES = 1;
+const constexpr size_t NUM_TRIES = 1;
+const constexpr size_t BUFFER_POOL_SLOT_NUM = 128;
 
 template <typename... Args>
 void LaunchParallelTest(std::vector<std::thread> &threads, uint32_t num_threads, Args &&...args) {
@@ -51,11 +54,11 @@ void DeleteHelper(std::shared_ptr<BPlusTree<key_t, value_t>> tree, const std::ve
 TEST(CoreTest, Concurrent_Insert_Test) {
   for (size_t iter = 0; iter < NUM_TRIES; ++iter) {
     auto disk_manager = std::make_shared<DiskManager>("test.db");
-    auto buffer_pool_manager = std::make_shared<BufferPoolManager>(256 * 1024, disk_manager);
+    auto buffer_pool_manager = std::make_shared<BufferPoolManager>(BUFFER_POOL_SLOT_NUM, disk_manager);
     auto container = std::make_shared<BPlusTree<key_t, value_t>>(buffer_pool_manager);
 
     std::vector<key_t> keys;
-    size_t NUM_KEYS = 200000;
+    size_t NUM_KEYS = 20000000; // 20 million
 
     std::random_device rd;
     std::mt19937 mt(rd());
@@ -64,7 +67,7 @@ TEST(CoreTest, Concurrent_Insert_Test) {
       keys.push_back(dist(mt));
     }
 
-    size_t NUM_THREADS = 4;
+    size_t NUM_THREADS = 1;
     std::vector<std::thread> insert_threads;
     for (size_t iter = 0; iter < NUM_KEYS;) {
       const std::vector<key_t> keys_interval{keys.begin() + iter, keys.begin() + iter + NUM_KEYS / NUM_THREADS};
@@ -87,7 +90,7 @@ TEST(CoreTest, Concurrent_Insert_Test) {
   }
 }
 
-TEST(CoreTest, Concurrent_Remove_Test) {
+TEST(CoreTest, DISABLED_Concurrent_Remove_Test) {
   for (size_t iter = 0; iter < NUM_TRIES; ++iter) {
     auto disk_manager = std::make_shared<DiskManager>("test.db");
     auto buffer_pool_manager = std::make_shared<BufferPoolManager>(50, disk_manager);
@@ -133,7 +136,7 @@ TEST(CoreTest, Concurrent_Remove_Test) {
   }
 }
 
-TEST(CoreTest, Concurrent_Read_Test) {
+TEST(CoreTest, DISABLED_Concurrent_Read_Test) {
   for (size_t iter = 0; iter < NUM_TRIES; ++iter) {
     auto disk_manager = std::make_shared<DiskManager>("test.db");
     auto buffer_pool_manager = std::make_shared<BufferPoolManager>(50, disk_manager);

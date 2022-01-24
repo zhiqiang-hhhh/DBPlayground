@@ -17,7 +17,12 @@ namespace miniKV {
 class BufferPoolManager {
  public:
   BufferPoolManager() = default;
-  BufferPoolManager(size_t pool_size_, std::shared_ptr<DiskManager> disk_manager_);
+  /**
+     * Create a new buffer pool manager.
+     * @param slot_num Number of pages in buffer, page size is defiend in src/Common/Config.h.
+     * @param disk_manager_ A buffer pool manager.
+     */
+  BufferPoolManager(size_t slot_num, std::shared_ptr<DiskManager> disk_manager_);
 
   std::shared_ptr<Page> FetchPage(miniKV::page_id_t page_id);
   bool UnpinPage(page_id_t page_id, bool is_dirty);
@@ -27,7 +32,7 @@ class BufferPoolManager {
   void FlushAllPages();
 
  private:
-  std::size_t pool_size;
+  std::size_t slot_num;
   std::shared_ptr<DiskManager> disk_manager;
   std::unique_ptr<IReplacer> replacer;
   std::vector<std::shared_ptr<Page>> pages;
