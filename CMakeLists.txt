@@ -10,10 +10,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-find_package(gflags REQUIRED)
+#find_package(gflags REQUIRED)
 #find_package(glog REQUIRED)
 # set(GFLAGS_INSTALL ON)
-# add_subdirectory(contrib/gflags)
+add_subdirectory(contrib/gflags)
 add_subdirectory(contrib/glog)
 add_subdirectory(contrib/googletest)
 

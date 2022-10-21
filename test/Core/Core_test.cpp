@@ -17,7 +17,7 @@
 namespace miniKV {
 
 const constexpr size_t NUM_TRIES = 1;
-const constexpr size_t BUFFER_POOL_SLOT_NUM = 128;
+const constexpr size_t BUFFER_POOL_SLOT_NUM = 128000;
 
 template <typename... Args>
 void LaunchParallelTest(std::vector<std::thread> &threads, uint32_t num_threads, Args &&...args) {
@@ -67,7 +67,7 @@ TEST(CoreTest, Concurrent_Insert_Test) {
       keys.push_back(dist(mt));
     }
 
-    size_t NUM_THREADS = 1;
+    size_t NUM_THREADS = 10;
     std::vector<std::thread> insert_threads;
     for (size_t iter = 0; iter < NUM_KEYS;) {
       const std::vector<key_t> keys_interval{keys.begin() + iter, keys.begin() + iter + NUM_KEYS / NUM_THREADS};
