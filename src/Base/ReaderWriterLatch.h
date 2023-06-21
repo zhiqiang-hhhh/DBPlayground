@@ -9,10 +9,10 @@
  * Reader-Writer latch backed by std::mutex.
  */
 
+#include <condition_variable>
 #include <cstdint>
 #include <memory>
 #include <mutex>
-#include <condition_variable>
 
 class ReaderWriterLatch {
   using mutex_t = std::mutex;
