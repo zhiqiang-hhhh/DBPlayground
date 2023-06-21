@@ -7,3 +7,9 @@
 [submodule "contrib/googletest"]
 	path = contrib/googletest
 	url = git@github.com:google/googletest.git
+[submodule "contrib/boost"]
+	path = contrib/boost
+	url = git@github.com:zhiqiang-hhhh/boost.git
+[submodule "contrib/zlib-ng"]
+	path = contrib/zlib-ng
+	url = git@github.com:zhiqiang-hhhh/zlib-ng.git
