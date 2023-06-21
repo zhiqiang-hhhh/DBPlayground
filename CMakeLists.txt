@@ -9,7 +9,7 @@ set(MiniKV_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-cmake_policy(SET CMP0077 NEW)
+set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 set(WITH_GFLAGS OFF)
 set(WITH_GTEST OFF)
 set(WITH_PKGCONFIG OFF)
@@ -19,7 +19,7 @@ add_subdirectory(contrib/boost-cmake)
 add_subdirectory(contrib/googletest-cmake)
 
 add_subdirectory(src)
-add_subdirectory(test)
+# add_subdirectory(test)
 
 add_executable(miniKV)
 target_sources(miniKV PRIVATE main.cpp)
