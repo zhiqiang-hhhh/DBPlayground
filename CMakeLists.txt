@@ -39,9 +39,9 @@ find_program(CLANG_FORMAT_BIN
         NAMES clang-format clang-format-8
         HINTS ${CLANG_SEARCH_PATH})
 if ("${CLANG_FORMAT_BIN}" STREQUAL "CLANG_FORMAT_BIN-NOTFOUND")
-    message(WARNING "couldn't find clang-format.")
+    message(WARNING "Couldn't find clang-format.")
 else()
-    message(STATUS "found clang-format at ${CLANG_FORMAT_BIN}")
+    message(STATUS "Found clang-format at ${CLANG_FORMAT_BIN}")
 endif()
 
 string(CONCAT MINIKV_FORMAT_DIRS
