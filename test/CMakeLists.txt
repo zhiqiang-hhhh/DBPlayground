@@ -26,15 +26,14 @@ foreach (minikv_test_source ${MINIKV_TEST_SOURCES})
     add_executable(${minikv_test_name} ${minikv_test_source})
     add_dependencies(build-tests ${minikv_test_name})
     add_dependencies(check-tests ${minikv_test_name})
-
-    target_link_libraries(${minikv_test_name} miniKV_lib gtest gmock_main)
+    target_link_libraries(${minikv_test_name} miniKV_lib _gtest_all _gmock_all)
 
     # Set test target properties and dependencies.
-    set_target_properties(${minikv_test_name}
-            PROPERTIES
+    set_target_properties(
+        ${minikv_test_name}
+        PROPERTIES
             RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/test"
-            COMMAND ${minikv_test_name}
-            )
+            COMMAND ${minikv_test_name})
 
     # Add the test under CTest.
     add_test(${minikv_test_name} ${VALGRIND_BIN} ${VALGRIND_OPTIONS}

@@ -10,25 +10,29 @@ set(MiniKV_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR})
 
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
-set(WITH_GFLAGS OFF)
-set(WITH_GTEST OFF)
-set(WITH_PKGCONFIG OFF)
-add_subdirectory(contrib/glog)
+
+add_subdirectory(contrib/glog-cmake)
 add_subdirectory(contrib/zlib-ng-cmake)
 add_subdirectory(contrib/boost-cmake)
 add_subdirectory(contrib/googletest-cmake)
 
 add_subdirectory(src)
-# add_subdirectory(test)
 
 add_executable(miniKV)
 target_sources(miniKV PRIVATE main.cpp)
 target_link_libraries(miniKV PRIVATE miniKV_lib)
 
-
 ######################################################################################################################
 # Make Target
 ######################################################################################################################
+
+option(MNKV_BUILD_TEST "MiniKV build test" ON)
+message(STATUS "MiniKV build test: " ${MNKV_BUILD_TEST})
+if(${MNKV_BUILD_TEST})
+    enable_testing()
+    include(CTest)
+    add_subdirectory(test)
+endif()
 
 # clang-format
 find_program(CLANG_FORMAT_BIN
@@ -48,13 +52,9 @@ string(CONCAT MINIKV_FORMAT_DIRS
 set(BUILD_SUPPORT_DIR "${PROJECT_SOURCE_DIR}/build-support")
 
 # runs clang format and updates files in place.
-add_custom_target(format
-        ${BUILD_SUPPORT_DIR}/run_clang_format.py
-        ${CLANG_FORMAT_BIN}
+add_custom_target(
+        format 
+        ${BUILD_SUPPORT_DIR}/run_clang_format.py ${CLANG_FORMAT_BIN}
         ${BUILD_SUPPORT_DIR}/clang_format_exclusions.txt
-        --source_dirs
-        ${MINIKV_FORMAT_DIRS}
-        --fix
-        --quiet
-        )
+        --source_dirs ${MINIKV_FORMAT_DIRS} --fix --quiet)
 

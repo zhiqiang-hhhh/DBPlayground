@@ -58,7 +58,7 @@ TEST(CoreTest, Concurrent_Insert_Test) {
     auto container = std::make_shared<BPlusTree<key_t, value_t>>(buffer_pool_manager);
 
     std::vector<key_t> keys;
-    size_t NUM_KEYS = 20000000; // 20 million
+    size_t NUM_KEYS = 20000000;  // 20 million
 
     std::random_device rd;
     std::mt19937 mt(rd());
