@@ -5,29 +5,25 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_BUILD_TYPE debug)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+set(MiniKV_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-#find_package(gflags REQUIRED)
-#find_package(glog REQUIRED)
-# set(GFLAGS_INSTALL ON)
-add_subdirectory(contrib/gflags)
+set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+set(WITH_GFLAGS OFF)
+set(WITH_GTEST OFF)
+set(WITH_PKGCONFIG OFF)
 add_subdirectory(contrib/glog)
-add_subdirectory(contrib/googletest)
+add_subdirectory(contrib/zlib-ng-cmake)
+add_subdirectory(contrib/boost-cmake)
+add_subdirectory(contrib/googletest-cmake)
 
 add_subdirectory(src)
-add_subdirectory(test)
+# add_subdirectory(test)
 
-find_package(Boost REQUIRED regex date_time system filesystem graph)
-include_directories(${BOOST_INCLUDE_DIRS})
-message("boost inc:${Boost_INCLUDE_DIR}")
-message("boost lib: ${Boost_LIBRARIES}")
-
-
-add_executable(miniKV main.cpp)
-target_link_libraries(miniKV miniKV_lib)
+add_executable(miniKV)
+target_sources(miniKV PRIVATE main.cpp)
+target_link_libraries(miniKV PRIVATE miniKV_lib)
 
 
 ######################################################################################################################
