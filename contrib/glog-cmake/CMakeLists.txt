@@ -1,0 +1,7 @@
+set (SRC_DIR "${MiniKV_SOURCE_DIR}/contrib/glog")
+
+set(WITH_GFLAGS OFF)
+set(WITH_GTEST OFF)
+set(WITH_PKGCONFIG OFF)
+set(BUILD_SHARED_LIBS OFF)
+add_subdirectory(${SRC_DIR} ${CMAKE_CURRENT_BINARY_DIR}/glog)

@@ -5,9 +5,9 @@
 #ifndef MINIKV_BOUNDEDQUEUE_H
 #define MINIKV_BOUNDEDQUEUE_H
 
+#include <condition_variable>
 #include <iostream>
 #include <list>
-#include <condition_variable>
 #include <mutex>
 
 template <typename T>

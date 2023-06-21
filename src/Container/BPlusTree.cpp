@@ -109,9 +109,8 @@ void BPLUSTREE::StartNewTree(const KeyType &key, const ValueType &value) {
   // For a new B+ tree, the root page IS the leaf page.
   leaf_page->Insert(key, value);
 
-  LOG(INFO) << "Created a new BPLUS Tree, ENTRY_SIZE " << sizeof(MappingType) 
-            << " LEAF_MAX_SIZE " << leaf_max_size_ << " INTERNAL_MAX_SIZE " << internal_max_size_
-            << std::endl;
+  LOG(INFO) << "Created a new BPLUS Tree, ENTRY_SIZE " << sizeof(MappingType) << " LEAF_MAX_SIZE " << leaf_max_size_
+            << " INTERNAL_MAX_SIZE " << internal_max_size_ << std::endl;
 
   buffer_pool_manager_->UnpinPage(root_page_id_, true);  // unpin
 }
