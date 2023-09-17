@@ -11,6 +11,24 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 
+if(APPLE)
+    # 检查操作系统是否为 macOS
+    execute_process(
+        COMMAND uname -m
+        OUTPUT_VARIABLE ARCH
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+    if(ARCH STREQUAL "arm64")
+        # 设置ARCH_AARCH64为True
+        set(ARCH_AARCH64 True)
+    endif()
+    # 设置OS_DARWIN为True
+    set(OS_DARWIN True)
+endif()
+
+message(STATUS "ARCH_AARCH64: ${ARCH_AARCH64}")
+message(STATUS "OS_DARWIN: ${OS_DARWIN}")
+
 add_subdirectory(contrib/glog-cmake)
 add_subdirectory(contrib/zlib-ng-cmake)
 add_subdirectory(contrib/boost-cmake)
