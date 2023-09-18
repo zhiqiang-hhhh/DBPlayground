@@ -1,6 +1,6 @@
 # DBPlayground
 
-`DBPlaygound` aims to offer a platform to show/verify how to integrate other intersting things with a database.
+`DBPlaygound` aims to offer a platform to show/verify how to integrate other interesting things with a database.
 
 We offer a prototype database based on CMU 15445's course project.
 
