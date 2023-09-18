@@ -9,7 +9,7 @@
 /// LeanerProbeHashTable use fixed size of hash table, if we run out of all free slots, allocate a twice larger array.
 /// When collision happens, new entry will be inserted into next free slots after position where it should be.
 
-#include "src/Storage/BufferPool/BufferPoolManager.h"
+#include "Storage/BufferPool/BufferPoolManager.h"
 
 namespace miniKV {
 template <typename KeyType, typename ValueType>

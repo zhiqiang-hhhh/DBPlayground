@@ -2,12 +2,12 @@
 // Created by 何智强 on 2021/10/5.
 //
 
-#include "src/Container/BPlusTree.h"
+#include "Container/BPlusTree.h"
 
 #include <iostream>
 #include <string>
 
-#include "src/Storage/Page/Page.h"
+#include "Storage/Page/Page.h"
 
 namespace miniKV {
 INDEX_TEMPLATE_ARGUMENTS

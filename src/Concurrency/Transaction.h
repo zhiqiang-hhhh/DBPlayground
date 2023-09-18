@@ -25,8 +25,8 @@
 #include <thread>  // NOLINT
 #include <unordered_set>
 
-#include "src/Common/Config.h"
-#include "src/Storage/Page/Page.h"
+#include "Common/Config.h"
+#include "Storage/Page/Page.h"
 
 namespace miniKV {
 
