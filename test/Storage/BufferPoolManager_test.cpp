@@ -1,4 +1,4 @@
-#include "src/Storage/BufferPool/BufferPoolManager.h"
+#include "Storage/BufferPool/BufferPoolManager.h"
 
 #include <cstdio>
 #include <memory>

@@ -7,7 +7,7 @@
 #include <thread>
 #include <vector>
 
-#include "src/Base/BoundedQueue.h"
+#include "Base/BoundedQueue.h"
 
 template <typename... Args>
 void LaunchParallelThreads(std::vector<std::thread> &threads, size_t num_threads, Args &&...args) {

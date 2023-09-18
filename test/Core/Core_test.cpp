@@ -9,10 +9,10 @@
 
 #include "glog/logging.h"
 #include "gtest/gtest.h"
-#include "src/Common/Config.h"
-#include "src/Container/BPlusTree.h"
-#include "src/Storage/BufferPool/BufferPoolManager.h"
-#include "src/Storage/Disk/DiskManager.h"
+#include "Common/Config.h"
+#include "Container/BPlusTree.h"
+#include "Storage/BufferPool/BufferPoolManager.h"
+#include "Storage/Disk/DiskManager.h"
 
 namespace miniKV {
 
