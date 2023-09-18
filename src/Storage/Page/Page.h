@@ -8,8 +8,8 @@
 #include <cstring>
 #include <iostream>
 
-#include "src/Base/ReaderWriterLatch.h"
-#include "src/Common/Config.h"
+#include "Base/ReaderWriterLatch.h"
+#include "Common/Config.h"
 
 namespace miniKV {
 

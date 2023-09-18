@@ -17,8 +17,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "src/Common/Config.h"
-#include "src/Storage/BufferPool/IReplacer.h"
+#include "Common/Config.h"
+#include "Storage/BufferPool/IReplacer.h"
 
 namespace miniKV {
 

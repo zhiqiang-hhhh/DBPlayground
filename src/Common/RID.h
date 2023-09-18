@@ -9,6 +9,8 @@
 
 #include "Config.h"
 
+namespace miniKV {
+
 class RID {
  public:
   /** The default constructor creates an invalid RID! */
@@ -53,5 +55,7 @@ class RID {
   page_id_t page_id_{INVALID_PAGE_ID};
   uint32_t slot_num_{0};  // logical offset from 0, 1...
 };
+
+}  // namespace miniKV
 
 #endif  // MINIKV_RID_H

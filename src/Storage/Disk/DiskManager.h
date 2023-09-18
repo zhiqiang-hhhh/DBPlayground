@@ -10,7 +10,7 @@
 #include <string>
 #include <utility>
 
-#include "src/Common/Config.h"
+#include "Common/Config.h"
 
 namespace miniKV {
 

@@ -10,9 +10,9 @@
 #include <cstdlib>
 #include <string>
 
-#include "src/Common/Config.h"
-#include "src/Concurrency/Transaction.h"
-#include "src/Storage/BufferPool/BufferPoolManager.h"
+#include "Common/Config.h"
+#include "Concurrency/Transaction.h"
+#include "Storage/BufferPool/BufferPoolManager.h"
 
 namespace miniKV {
 

@@ -4,8 +4,8 @@
 
 #include "LeanerProbeHashTable.h"
 
-#include "src/Storage/Page/HashTableHeaderPage.h"
-#include "src/Storage/Page/HashTablePage.h"
+#include "Storage/Page/HashTableHeaderPage.h"
+#include "Storage/Page/HashTablePage.h"
 
 namespace miniKV {
 

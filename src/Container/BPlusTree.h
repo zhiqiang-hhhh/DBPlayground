@@ -22,12 +22,12 @@
 #include <string>
 #include <vector>
 
-#include "src/Common/Config.h"
-#include "src/Concurrency/Transaction.h"
-#include "src/Storage/BufferPool/BufferPoolManager.h"
-#include "src/Storage/Page/BPlusTreeInternalPage.h"
-#include "src/Storage/Page/BPlusTreeLeafPage.h"
-#include "src/Storage/Page/BPlusTreePage.h"
+#include "Common/Config.h"
+#include "Concurrency/Transaction.h"
+#include "Storage/BufferPool/BufferPoolManager.h"
+#include "Storage/Page/BPlusTreeInternalPage.h"
+#include "Storage/Page/BPlusTreeLeafPage.h"
+#include "Storage/Page/BPlusTreePage.h"
 
 namespace miniKV {
 

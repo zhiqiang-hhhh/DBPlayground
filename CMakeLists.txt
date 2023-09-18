@@ -7,8 +7,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(MiniKV_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
-include_directories(${PROJECT_SOURCE_DIR})
-
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 
 if(APPLE)
@@ -33,6 +31,10 @@ add_subdirectory(contrib/glog-cmake)
 add_subdirectory(contrib/zlib-ng-cmake)
 add_subdirectory(contrib/boost-cmake)
 add_subdirectory(contrib/googletest-cmake)
+
+if(NM_BUILD_SHARED=ON)
+    set(NM_BUILD_SHARED ON)
+endif()
 
 add_subdirectory(src)
 

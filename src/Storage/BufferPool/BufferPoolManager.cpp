@@ -2,11 +2,11 @@
 // Created by 何智强 on 2021/10/2.
 //
 
-#include "src/Storage/BufferPool/BufferPoolManager.h"
+#include "Storage/BufferPool/BufferPoolManager.h"
 
 #include <memory>
 
-#include "src/Storage/BufferPool/LRUReplaceer.h"
+#include "Storage/BufferPool/LRUReplaceer.h"
 
 namespace miniKV {
 

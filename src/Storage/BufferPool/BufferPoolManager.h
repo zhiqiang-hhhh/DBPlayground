@@ -8,10 +8,10 @@
 #include <list>
 #include <unordered_map>
 
-#include "src/Common/Config.h"
-#include "src/Storage/BufferPool/IReplacer.h"
-#include "src/Storage/Disk/DiskManager.h"
-#include "src/Storage/Page/Page.h"
+#include "Common/Config.h"
+#include "Storage/BufferPool/IReplacer.h"
+#include "Storage/Disk/DiskManager.h"
+#include "Storage/Page/Page.h"
 
 namespace miniKV {
 class BufferPoolManager {
