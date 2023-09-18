@@ -1,5 +1,8 @@
-# miniKV
-A disk based miniKV. Inspired by CMU 15445's B+Tree Index
+# DBPlayground
+
+`DBPlaygound` aims to offer a platform to show/verify how to integrate other intersting things with a database.
+
+We offer a prototype database based on CMU 15445's course project.
 
 ## Build
 ```bash
