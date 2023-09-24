@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "src/Core/MiniKV.h"
-
+#include "Core/MiniKV.h"
 
 
 int main(int argc, char** argv) {
