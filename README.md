@@ -4,6 +4,13 @@
 
 We offer a prototype database based on CMU 15445's course project.
 
+## Target list
+
+1. Introduce GWP-ASan and ASan
+2. Provide multi-languages accessibility(python/golang)
+3. Build-in perf
+4. LLM integration?
+
 ## Build
 ```bash
 git clone git@github.com:roanhe-ts/miniKV.git
